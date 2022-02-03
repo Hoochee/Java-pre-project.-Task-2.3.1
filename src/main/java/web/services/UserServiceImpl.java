@@ -7,6 +7,7 @@ import web.model.User;
 import web.repository.UserRepository;
 
 import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -19,6 +20,7 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository repository) {
         this.repository = repository;
     }
+
     @Transactional
     @Override
     public void save(User user) {

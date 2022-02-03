@@ -3,7 +3,6 @@ package web.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
@@ -17,30 +16,17 @@ import javax.sql.DataSource;
 import java.util.Properties;
 
 @Configuration
-//@EnableJpaRepositories("web.repository")
 @EnableTransactionManagement
-//@ComponentScan("web")
 @PropertySource("classpath:db.properties")
 public class DataBaseConfig {
 
-
     private Environment env;
+
     @Autowired
     public DataBaseConfig(Environment env) {
         this.env = env;
     }
 
-//    private Properties hibernateProperties() {
-//        Properties properties;
-//        try {
-//            properties = new Properties();
-//            InputStream is = getClass().getClassLoader().getResourceAsStream("web/resources/hibernate.properties");
-//            properties.load(is);
-//            return properties;
-//        } catch (IOException e) {
-//            throw new IllegalArgumentException("Can' find 'hibernate.properties' file");
-//        }
-//    }
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -53,7 +39,6 @@ public class DataBaseConfig {
 
     @Bean
     public DataSource dataSource() {
-
         BasicDataSource dataSource = new BasicDataSource();
         dataSource.setDriverClassName(env.getRequiredProperty("db.driver"));
         dataSource.setUrl(env.getRequiredProperty("db.url"));
@@ -61,7 +46,6 @@ public class DataBaseConfig {
         dataSource.setPassword(env.getRequiredProperty("db.password"));
         return dataSource;
     }
-
 
     private Properties hibernateProperties() {
         Properties properties = new Properties();

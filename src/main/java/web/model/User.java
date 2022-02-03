@@ -1,5 +1,6 @@
 package web.model;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -9,10 +10,13 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(name = "firstname")
     private String firstName;
+
     @Column(name = "lastname")
     public String lastName;
+
     @Column(name = "email")
     public String email;
 

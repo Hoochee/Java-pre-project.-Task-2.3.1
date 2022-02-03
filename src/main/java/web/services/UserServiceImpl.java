@@ -37,8 +37,10 @@ public class UserServiceImpl implements UserService {
         return repository.getById(id);
     }
 
+    @Transactional
     @Override
     public void delete(Long id) {
+        repository.delete(id);
 
     }
 }

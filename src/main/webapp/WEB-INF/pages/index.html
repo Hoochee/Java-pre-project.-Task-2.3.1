@@ -6,14 +6,14 @@
     <title></title>
 </head>
 <body>
-<h1>Users table:</h1>
+<h1>Users:</h1>
 <table>
     <tr>
         <th>Id</th>
         <th>Name</th>
         <th>Surname</th>
         <th>E-mail</th>
-        <th>Operations</th>
+        <th>Actions</th>
     </tr>
 
     <tr th:each="user, state : ${users}">
@@ -25,13 +25,13 @@
             <table>
                 <tr>
                     <td>
-                        <form method="POST" th:action="@{/updateuser}">
+                        <form method="POST" th:action="@{/update}">
                             <input type="hidden" name="id" th:value="${user.getId()}"/>
                             <input type="submit" value="update">
                         </form>
                     </td>
                     <td>
-                        <form method="POST" th:action="@{/deleteuser}">
+                        <form method="POST" th:action="@{/delete}">
                             <input type="hidden" name="id" th:value="${user.getId()}"/>
                             <input type="submit" value="delete">
                         </form>
@@ -43,8 +43,8 @@
 
 </table>
 <br>
-<input type="button" value="add"
-       onclick="window.location.href = '/add'"/>
+<input type="button" value="Add"
+       onclick="window.location.href = '/new'"/>
 
 </body>
 </html>

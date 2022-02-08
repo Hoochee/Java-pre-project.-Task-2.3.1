@@ -37,4 +37,12 @@ public class UserRepositoryImpl implements UserRepository {
                 .setParameter("id", id)
                 .executeUpdate();
     }
+
+    @Override
+    public void update(Long id, User updatedUser) {
+        User userForUpdate = getById(id);
+        userForUpdate.setFirstName(updatedUser.getFirstName());
+        userForUpdate.setLastName(updatedUser.getLastName());
+        userForUpdate.setEmail(updatedUser.getEmail());
+    }
 }

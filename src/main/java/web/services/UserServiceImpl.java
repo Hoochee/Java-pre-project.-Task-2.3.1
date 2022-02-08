@@ -43,6 +43,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public void delete(Long id) {
         repository.delete(id);
+    }
 
+    @Transactional
+    @Override
+    public void update(Long id, User updatedUser) {
+        repository.update(id, updatedUser);
     }
 }
